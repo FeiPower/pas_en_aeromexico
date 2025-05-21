@@ -1,3 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Gotham:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Avenir:wght@400;500;700&display=swap');
+
 html, body {
   height: 100%;
   margin: 0;
@@ -66,9 +72,9 @@ html, body {
 }
 
 .podcast-title {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Avenir', sans-serif;
   font-size: 2rem;
-  font-weight: bold;
+  font-weight: 700;
   color: #014164;
   text-align: center;
   margin-bottom: 18px;
@@ -89,7 +95,7 @@ html, body {
 }
 
 .podcast-subtitle {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Avenir', sans-serif;
   font-size: 1.2rem;
   color: #014164;
   margin-bottom: 12px;
@@ -120,14 +126,14 @@ html, body {
   margin-bottom: 10px;
 }
 
-.player-btn {
+/* .player-btn {
   background: none;
   border: none;
   color: #014164;
   font-size: 2rem;
   cursor: pointer;
   transition: color 0.2s;
-}
+} */
 /* .player-btn:hover {
   color: #014164;
 }

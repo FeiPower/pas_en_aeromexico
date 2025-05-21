@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Visualización de Nubes - Aeromexico</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+    #clouds-bg {
+      width: 100vw;
+      height: 100vh;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 0;
+    }
+    /* Permite superponer contenido si se desea */
+    .content {
+      position: relative;
+      z-index: 1;
+    }
+  </style>
+</head>
+<body>
+  <div id="clouds-bg"></div>
+  <div class="content">
+    <div class="podcast-card">
+      <img src="aeromexico-logo.png" alt="Aeromexico Logo" class="logo-header">
+      <hr class="divider">
+      <div class="podcast-title">Dormir bien</div>
+      <img src="playstore.png" alt="Podcast Logo" class="podcast-logo-placeholder">
+      <div class="podcast-subtitle">The Data Edge with Fabián S.</div>
+      <hr class="divider">
+      <div class="audio-controls">
+        <!-- <span class="time">00:35</span>
+        <input type="range" min="0" max="100" value="35" class="slider">
+        <div class="player-buttons">
+          <button class="player-btn">&#9198;</button>
+          <button class="player-btn">&#9654;</button>
+          <button class="player-btn">&#9197;</button>
+        </div>
+      </div> -->
+    </div>
+  </div>
+  <script src="three.r134.min.js"></script>
+  <script src="vanta.clouds.min.js"></script>
+  <script src="scripts.js"></script>
+</body>
+</html>

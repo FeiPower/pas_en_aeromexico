@@ -12,5 +12,5 @@ VANTA.CLOUDS({
   sunColor: 0xc56d19,
   sunGlareColor: 0xff6633,
   sunlightColor: 0xc07033,
-  speed: .80
+  speed: 1
 });

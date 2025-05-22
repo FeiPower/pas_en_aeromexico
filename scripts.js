@@ -117,10 +117,8 @@ function updatePodcastCard() {
       </ul>
     </div>
   `;
-  // Limpiar el tiempo y slider hasta que se cargue el audio
   document.getElementById('audio-time').textContent = '00:00';
   document.getElementById('audio-slider').value = 0;
-  // Actualizar la fuente del audio
   const audioPlayer = document.getElementById('audio-player');
   if (audioPlayer) {
     audioPlayer.src = podcast.audio;
@@ -128,28 +126,34 @@ function updatePodcastCard() {
     audioPlayer.pause();
   }
   // Reset play button to play icon
-  const playBtn = document.getElementById('btn-play');
-  if (playBtn) {
-    playBtn.innerHTML = '&#9654;';
+  const playPauseIcon = document.getElementById('play-pause-icon');
+  if (playPauseIcon) {
+    playPauseIcon.src = 'play_icon.svg';
+    playPauseIcon.alt = 'Reproducir';
   }
 }
 
 // Control de reproducción
 function setupAudioControls() {
   const audioPlayer = document.getElementById('audio-player');
-  const playBtn = document.getElementById('btn-play');
+  const playPauseBtn = document.getElementById('play-pause-btn');
+  const playPauseIcon = document.getElementById('play-pause-icon');
   const slider = document.getElementById('audio-slider');
   const timeLabel = document.getElementById('audio-time');
   const durationLabel = document.getElementById('audio-duration');
 
-  if (!audioPlayer || !playBtn || !slider || !timeLabel || !durationLabel) return;
+  if (!audioPlayer || !playPauseBtn || !playPauseIcon || !slider || !timeLabel || !durationLabel) return;
 
-  // Cambia el ícono del botón play/pause
-  function updatePlayButton() {
-    playBtn.innerHTML = audioPlayer.paused ? '&#9654;' : '&#10073;&#10073;';
+  function updatePlayPauseIcon() {
+    if (audioPlayer.paused) {
+      playPauseIcon.src = 'play_icon.svg';
+      playPauseIcon.alt = 'Reproducir';
+    } else {
+      playPauseIcon.src = 'pause_icon.svg';
+      playPauseIcon.alt = 'Pausar';
+    }
   }
 
-  // Actualiza el slider y el tiempo mostrado
   function updateProgress() {
     slider.max = Math.floor(audioPlayer.duration) || slider.max;
     slider.value = Math.floor(audioPlayer.currentTime);
@@ -157,8 +161,7 @@ function setupAudioControls() {
     durationLabel.textContent = formatTime(Math.floor(audioPlayer.duration) || 0);
   }
 
-  // Play/Pause
-  playBtn.addEventListener('click', () => {
+  playPauseBtn.addEventListener('click', () => {
     if (audioPlayer.paused) {
       audioPlayer.play();
     } else {
@@ -166,25 +169,18 @@ function setupAudioControls() {
     }
   });
 
-  // Actualizar ícono al reproducir/pausar
-  audioPlayer.addEventListener('play', updatePlayButton);
-  audioPlayer.addEventListener('pause', updatePlayButton);
-
-  // Actualizar barra de progreso y tiempo
+  audioPlayer.addEventListener('play', updatePlayPauseIcon);
+  audioPlayer.addEventListener('pause', updatePlayPauseIcon);
   audioPlayer.addEventListener('timeupdate', updateProgress);
   audioPlayer.addEventListener('loadedmetadata', () => {
     slider.max = Math.floor(audioPlayer.duration);
     updateProgress();
   });
-
-  // Permitir buscar en el audio
   slider.addEventListener('input', () => {
     audioPlayer.currentTime = slider.value;
     updateProgress();
   });
-
-  // Inicializar estado
-  updatePlayButton();
+  updatePlayPauseIcon();
   updateProgress();
 }
 

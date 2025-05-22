@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>PAS en Aeromexico</title>
   <link rel="icon" type="image/png" href="playstore.png">
   <link rel="stylesheet" href="styles.css">
@@ -23,21 +23,22 @@
       <div class="podcast-subtitle" id="podcast-description"></div>
       <section class="audio-controls" aria-label="Controles de audio">
         <div class="audio-time-row" style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
-          <span class="time" id="audio-time">00:00</span>
-          <span class="time" id="audio-duration">00:00</span>
+          <span class="time" amplitude-current-time id="audio-time">00:00</span>
+          <span class="time" amplitude-duration-time id="audio-duration">00:00</span>
         </div>
-        <input type="range" min="0" max="100" value="35" class="slider" id="audio-slider" aria-label="Barra de progreso de audio">
+        <input type="range" min="0" max="100" value="0" class="slider" id="audio-slider" amplitude-song-slider aria-label="Barra de progreso de audio">
         <div class="player-buttons">
-          <button class="player-btn" id="btn-back" aria-label="Retroceder 10 segundos" type="button">&#9198;</button>
-          <button class="player-btn" id="btn-play" aria-label="Reproducir/Pausar" type="button">&#9654;</button>
-          <button class="player-btn" id="btn-forward" aria-label="Avanzar 10 segundos" type="button">&#9197;</button>
+          <button class="player-btn" id="play-pause-btn" aria-label="Reproducir/Pausar" type="button">
+            <!-- Play icon by default; pause icon will be toggled with JS -->
+            <img src="play_icon.svg" alt="Reproducir" id="play-pause-icon" style="width:50px;height:50px;" />
+          </button>
         </div>
       </section>
-      <audio id="audio-player" style="display:none;"></audio>
     </main>
   </div>
   <script src="three.r134.min.js"></script>
   <script src="vanta.clouds.min.js"></script>
   <script src="scripts.js"></script>
+  <audio id="audio-player"></audio>
 </body>
 </html>

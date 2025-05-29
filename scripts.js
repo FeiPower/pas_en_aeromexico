@@ -255,23 +255,35 @@ document.addEventListener('DOMContentLoaded', () => {
   const podcastMenu = document.getElementById('podcast-burger-menu');
 
   function closeMenu() {
-    podcastMenu.classList.remove('open');
+    if (podcastMenu) {
+      podcastMenu.classList.remove('open');
+    }
+  }
+
+  function toggleMenu() {
+    if (podcastMenu) {
+      podcastMenu.classList.toggle('open');
+    }
   }
 
   if (burgerBtn && podcastMenu) {
     burgerBtn.addEventListener('click', (e) => {
       e.stopPropagation();
-      podcastMenu.classList.toggle('open');
+      toggleMenu();
     });
+    
     // Cerrar menú al hacer clic fuera
     document.addEventListener('click', (e) => {
-      if (podcastMenu.classList.contains('open') && !podcastMenu.contains(e.target) && e.target !== burgerBtn) {
+      if (podcastMenu.classList.contains('open') && 
+          !podcastMenu.contains(e.target) && 
+          !burgerBtn.contains(e.target)) {
         closeMenu();
       }
     });
+    
     // Cerrar menú al seleccionar una técnica
     podcastMenu.addEventListener('click', (e) => {
-      if (e.target.classList.contains('podcast-menu-item')) {
+      if (e.target.closest('.podcast-menu-item')) {
         closeMenu();
       }
     });
